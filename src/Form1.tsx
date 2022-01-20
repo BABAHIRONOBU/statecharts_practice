@@ -9,9 +9,7 @@ import {
 } from '@chakra-ui/react';
 
 export const Form1: React.FC = () => {
-  const initialState = initState();
-
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch] = useReducer(reducer, undefined, initState);
   const {
     phoneNumber,
     authNumber,
@@ -223,6 +221,11 @@ async function authAuthNumber(phoneNumber: string, authNumber: string): Promise<
       msg: '인증번호 인증에 문제가 발생하였습니다. 다시 한번 시도해주세요.',
       status: 500,
     };
+  } else if (random > 0.7) {
+    res = {
+      msg: '해당 전화번호로 인증번호를 전송한 내역이 없습니다.',
+      status: 404,
+    };
   } else {
     res = {
       msg: '성공',
@@ -255,6 +258,7 @@ type State = {
 };
 
 function initState(): State {
+  console.log('init');
   return {
     status: 'phoneNumberInvalid',
     phoneNumber: '',
@@ -343,7 +347,7 @@ function reducer(state: State, action: Action): State {
 
     case 'phoneNumberValid': return phoneNumberValidReducer(state, action);
 
-    case 'sendError': return sendingReducer(state, action);
+    case 'sendError': return sendErrorReducer(state, action);
 
     case 'sending': return sendingReducer(state, action);
 
