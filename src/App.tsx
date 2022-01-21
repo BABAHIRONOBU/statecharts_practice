@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ChakraProvider } from '@chakra-ui/react';
 import { Index } from './Index';
-import { Form1 } from './Form1';
+import { Form1 } from './form1/Form1';
 import { Form2 } from './Form2';
 
 export const App: React.FC = () => {
