@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ChakraProvider } from '@chakra-ui/react';
 import { Index } from './Index';
 import { Form1 } from './form1/Form1';
-import { Form2 } from './Form2';
+import { Form2 } from './form2/Form2';
 
 export const App: React.FC = () => {
   return (
